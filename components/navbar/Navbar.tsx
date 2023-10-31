@@ -4,6 +4,7 @@
 import React from 'react'
 import { Container, Logo, Search, UserMenu } from '..';
 import { SafeUser } from '@/types';
+import Categories from './Categories';
 
 interface NavbarProps {
     currentUser?: SafeUser | null
@@ -21,6 +22,8 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
                     </div>
                 </Container>
             </div>
+
+            <Categories />
         </nav>
     )
 }

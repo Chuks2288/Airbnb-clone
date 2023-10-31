@@ -123,4 +123,4 @@ const modal: React.FC<ModalProps> = ({
     )
 }
 
-export default modal
+export default modal;
