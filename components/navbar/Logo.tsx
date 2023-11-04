@@ -11,6 +11,7 @@ const Logo = () => {
     return (
         <Link href="/" className="cursor-pointer">
             <Image
+                onClick={() => router.push("/")}
                 src="/images/logo.png"
                 alt="logo"
                 width="100"

@@ -3,8 +3,11 @@
 import { useCallback, useState } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { Avatar, MenuItem } from '..';
+
 import useRegisterModal from '@/hooks/useRegisterModal';
 import useLoginModal from '@/hooks/useLoginModal';
+import useRentModal from '@/hooks/useRentModal';
+
 import { signOut } from 'next-auth/react';
 import { SafeUser } from '@/types';
 
@@ -16,8 +19,8 @@ interface UserMenuProps {
 const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
 
     const registerModal = useRegisterModal();
-
     const loginModal = useLoginModal();
+    const rentModal = useRentModal();
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -25,15 +28,23 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
         setIsOpen((value) => !value)
     }, [])
 
+
+    const onRent = useCallback(() => {
+        if (!currentUser) {
+            return loginModal.onOpen();
+        }
+
+        rentModal.onOpen();
+    }, [currentUser, loginModal, rentModal]);
+
     return (
         <div className="relative">
             <div className="flex flex-row items-center gap-3">
                 <div
                     className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
-                    onClick={() => { }}
+                    onClick={onRent}
                 >
                     Airbnb your home
-                    {/* {currentUser?.name} */}
                 </div>
                 <div
                     className="p-4 md:py-1 md:px-2 border-[1px] flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-sm transition"
@@ -70,7 +81,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                                     label="My Properties"
                                 />
                                 <MenuItem
-                                    handleClick={() => { }}
+                                    handleClick={rentModal.onOpen}
                                     label="Airbnb my home"
                                 />
                                 <hr />
