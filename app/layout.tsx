@@ -1,3 +1,4 @@
+
 import { Nunito } from 'next/font/google';
 import { Navbar, ClientOnly } from '@/components';
 import RegisterModal from '@/components/modal/RegisterModal';
@@ -7,6 +8,7 @@ import LoginModal from '@/components/modal/LoginModal';
 import './globals.css'
 import getCurrentUser from './actions/getCurrentUser';
 import RentModal from '@/components/modal/RentModal';
+import SearchModal from '@/components/modal/SearchModal';
 
 export const metadata = {
   title: 'Airbnb',
@@ -23,6 +25,7 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
   const currerntUser = await getCurrentUser();
+
   return (
     <html lang="en">
       <body className={font.className}>
@@ -30,6 +33,7 @@ export default async function RootLayout({
           <ToasterProvider />
           <RegisterModal />
           <LoginModal />
+          <SearchModal />
           <RentModal />
           <Navbar currentUser={currerntUser} />
         </ClientOnly>
