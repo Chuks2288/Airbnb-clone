@@ -80,7 +80,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                                     label="My reservations"
                                 />
                                 <MenuItem
-                                    handleClick={() => { }}
+                                    handleClick={() => router.push("/properties")}
                                     label="My Properties"
                                 />
                                 <MenuItem
