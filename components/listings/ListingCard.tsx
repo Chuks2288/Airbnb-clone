@@ -113,4 +113,4 @@ const ListingCard: React.FC<ListingCardProps> = ({
     )
 }
 
-export default ListingCard
+export default ListingCard;

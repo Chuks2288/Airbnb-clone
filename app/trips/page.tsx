@@ -9,7 +9,7 @@ const TripsPage = async () => {
 
     const currentUser = await getCurrentUser();
     const reservations = await getReservations({
-        userId: currentUser.id
+        userId: currentUser?.id
     });
 
 

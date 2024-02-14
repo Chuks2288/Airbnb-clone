@@ -36,4 +36,4 @@ const HeartButton: React.FC<HeartButtonProps> = ({
     )
 }
 
-export default HeartButton
+export default HeartButton;

@@ -9,7 +9,6 @@ export default async function getListingById(
     params: IParams
 ) {
 
-
     try {
         const { listingId } = params;
 
@@ -41,3 +40,4 @@ export default async function getListingById(
         throw new Error(error);
     }
 }
+
